@@ -1,0 +1,137 @@
+[
+  {
+    "id": "prd-001",
+    "name": "NovaDesk Pro",
+    "category": "Office Furniture",
+    "price": 2500,
+    "stock": 18,
+    "status": "active",
+    "updatedAt": "2026-03-01T10:15:00Z"
+  },
+  {
+    "id": "prd-002",
+    "name": "LumaLamp X",
+    "category": "Lighting",
+    "price": 800,
+    "stock": 42,
+    "status": "active",
+    "updatedAt": "2026-02-25T08:22:00Z"
+  },
+  {
+    "id": "prd-003",
+    "name": "AeroChair Flex",
+    "category": "Office Furniture",
+    "price": 1900,
+    "stock": 5,
+    "status": "active",
+    "updatedAt": "2026-03-02T14:05:00Z"
+  },
+  {
+    "id": "prd-004",
+    "name": "VoltCharge Mini",
+    "category": "Electronics",
+    "price": 350,
+    "stock": 0,
+    "status": "inactive",
+    "updatedAt": "2026-01-19T12:00:00Z"
+  },
+  {
+    "id": "prd-005",
+    "name": "PureBrew Kettle",
+    "category": "Kitchen Appliances",
+    "price": 600,
+    "stock": 27,
+    "status": "active",
+    "updatedAt": "2026-02-18T09:30:00Z"
+  },
+  {
+    "id": "prd-006",
+    "name": "EchoSound Bar",
+    "category": "Electronics",
+    "price": 2200,
+    "stock": 12,
+    "status": "active",
+    "updatedAt": "2026-02-27T16:10:00Z"
+  },
+  {
+    "id": "prd-007",
+    "name": "ZenAir Purifier",
+    "category": "Home Appliances",
+    "price": 1500,
+    "stock": 0,
+    "status": "archived",
+    "updatedAt": "2026-02-28T11:45:00Z"
+  },
+  {
+    "id": "prd-008",
+    "name": "TerraPlanter XL",
+    "category": "Garden",
+    "price": 1300,
+    "stock": 35,
+    "status": "active",
+    "updatedAt": "2026-02-21T07:10:00Z"
+  },
+  {
+    "id": "prd-009",
+    "name": "PixelView Monitor 27",
+    "category": "Electronics",
+    "price": 4300,
+    "stock": 9,
+    "status": "active",
+    "updatedAt": "2026-03-03T06:55:00Z"
+  },
+  {
+    "id": "prd-010",
+    "name": "SwiftMouse Wireless",
+    "category": "Accessories",
+    "price": 250,
+    "stock": 60,
+    "status": "active",
+    "updatedAt": "2026-02-20T13:20:00Z"
+  },
+  {
+    "id": "prd-011",
+    "name": "CorePad Mechanical Keyboard",
+    "category": "Accessories",
+    "price": 1000,
+    "stock": 15,
+    "status": "active",
+    "updatedAt": "2026-02-26T17:35:00Z"
+  },
+  {
+    "id": "prd-012",
+    "name": "HydraFlow Shower System",
+    "category": "Home Improvement",
+    "price": 1800,
+    "stock": 0,
+    "status": "archived",
+    "updatedAt": "2026-02-15T10:05:00Z"
+  },
+  {
+    "id": "prd-013",
+    "name": "BreezeFan Tower",
+    "category": "Home Appliances",
+    "price": 700,
+    "stock": 22,
+    "status": "active",
+    "updatedAt": "2026-02-24T15:50:00Z"
+  },
+  {
+    "id": "prd-014",
+    "name": "SolarEdge Lantern",
+    "category": "Garden",
+    "price": 50,
+    "stock": 0,
+    "status": "inactive",
+    "updatedAt": "2026-01-28T09:40:00Z"
+  },
+  {
+    "id": "prd-015",
+    "name": "Nimbus Backpack",
+    "category": "Lifestyle",
+    "price": 900,
+    "stock": 33,
+    "status": "active",
+    "updatedAt": "2026-03-01T08:10:00Z"
+  }
+]
