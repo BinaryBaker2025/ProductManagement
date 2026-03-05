@@ -86,12 +86,13 @@ export default function App() {
     };
   }, [flashMessage]);
 
+  //Resets form error state before opening and closing modal
   function resetFormStuff() {
     setFormErrors({});
     setShowFormErrors(false);
   }
 
-  //Form valdiation and error handling making sure that the product name
+  //Form valdiation and error handling making sure that the product name, category and price are alwys filled in
   function checkForm(data) {
     const errors = {};
 
@@ -122,6 +123,7 @@ export default function App() {
     return errors;
   }
 
+  //open the modal for editing or creating a new product
   function openProductModal(product) {
     setSelectedId(product.id);
     setDraft({
@@ -133,6 +135,7 @@ export default function App() {
     setIsModalOpen(true);
   }
 
+  //Closing the model 
   function closeModal() {
     setIsModalOpen(false);
     setSelectedId(null);
@@ -140,6 +143,7 @@ export default function App() {
     resetFormStuff();
   }
 
+  //Saving a draft for when editting and creating new products, but user still has to click save to ensure the changes take effect
   function saveDraft(mode) {
     if (!draft) {
       return;
@@ -186,6 +190,7 @@ export default function App() {
     closeModal();
   }
 
+  //Deletes a product from the table
   function handleDelete() {
     if (!selectedId) {
       return;
@@ -202,6 +207,7 @@ export default function App() {
     closeModal();
   }
 
+  //Selects one row at a time or unselects it if already selected
   function toggleRowSelection(id) {
     if (selectedIds.includes(id)) {
       setSelectedIds(selectedIds.filter((item) => item !== id));
@@ -210,20 +216,22 @@ export default function App() {
     }
   }
 
+  //Bulk changes for a status change
   function handleBulkStatusChange() {
     if (selectedIds.length === 0) {
       return;
     }
 
+    const selectedIdSet = new Set(selectedIds);
     const nextProducts = products.map((product) => {
-      if (selectedIds.indexOf(product.id) > 0) {
-        return {
-          ...product,
-          status: bulkStatus,
-        };
+      if (!selectedIdSet.has(product.id)) {
+        return product;
       }
 
-      return product;
+      return {
+        ...product,
+        status: bulkStatus,
+      };
     });
 
     setProducts(nextProducts);
@@ -233,6 +241,7 @@ export default function App() {
     setSelectedIds([]);
   }
 
+  //Creating a new product with a unqie ID that follows the last ID used
   function handleCreate() {
     let maxNumber = 0;
 
@@ -269,6 +278,7 @@ export default function App() {
     setIsModalOpen(true);
   }
 
+  //Updates draft values as the user types in the modal form
   function handleDraftChange(field, value) {
     if (!draft) {
       return;
@@ -286,6 +296,7 @@ export default function App() {
     }
   }
 
+  //checks for error if user tried to save without fields being filled in
   function handleFieldBlur(field) {
     if (!draft) {
       return;
@@ -298,6 +309,7 @@ export default function App() {
     }
   }
 
+  //Saves the form
   function handleFormSubmit(e) {
     e.preventDefault();
 
@@ -308,15 +320,18 @@ export default function App() {
     }
   }
 
+  //Resets filters 
   function clearFilters() {
     setSearchTerm("");
     setStatusFilter("all");
     setSortedPrice("none");
   }
 
+  //Filtering products based on search words, status selection or pricing sorting
   let filteredProducts = [...products];
   const text = searchTerm.trim().toLowerCase();
 
+  //Searching by name, cateogry or product id
   if (text) {
     filteredProducts = filteredProducts.filter((product) => {
       const name = product.name ? product.name.toLowerCase() : "";
@@ -327,12 +342,14 @@ export default function App() {
     });
   }
 
+  //Filtering by status
   if (statusFilter !== "all") {
     filteredProducts = filteredProducts.filter((product) => {
       return String(product.status).toLowerCase() === statusFilter.toLowerCase();
     });
   }
 
+  //Sorting the products by the price 
   if (sortedPrice === "asc") {
     filteredProducts = [...filteredProducts].sort((a, b) => Number(a.price) - Number(b.price));
   }
@@ -362,6 +379,7 @@ export default function App() {
     }
   }, [allVisibleSelected, someVisibleSelected]);
 
+  //Selects or unselects all visible rows in the table
   function toggleSelectAllVisible() {
     const isEverythingSelected = visibleIds.every((id) => selectedIds.includes(id));
 
