@@ -1,0 +1,32 @@
+Simple Form Handling and Validation Notes
+
+This is a simple note about how I handled the form in this project.
+
+Form handling
+
+- The form is in the product modal in src/App.jsx.
+- I use draft state to store what the user types.
+- Every input uses handleDraftChange to update the draft.
+- When the form is submitted, handleFormSubmit runs and calls saveDraft.
+- The product only gets saved after clicking Save or Create.
+
+Validation
+
+- I made a function called checkForm.
+- It checks:
+  - name is required
+  - category is required
+  - price is required and must be 0 or more
+  - stock is required and must be a whole number 0 or more
+  - status must be one of the valid statuses
+- If there are errors, they are saved in formErrors.
+- I show the errors under each field.
+
+Small flow
+
+1. User types in modal form.
+2. Draft state updates.
+3. User clicks save/create.
+4. Validation runs.
+5. If no errors, data is saved.
+6. If there are errors, user sees messages and can fix fields.
