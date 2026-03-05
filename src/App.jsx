@@ -9,6 +9,8 @@ const SORT_OPTIONS = [
 ];
 
 const PRODUCT_STATUSES = ["active", "inactive", "pending", "archived"];
+// This key stores products in browser localStorage.
+const PRODUCTS_STORAGE_KEY = "product-management-products";
 
 export default function App() {
   const [products, setProducts] = useState([]);
@@ -30,7 +32,7 @@ export default function App() {
   const selectAllRef = useRef(null);
 
 
-  //Loads data from mockData file with a 1200ms delay 
+  // First try localStorage. If not found, use mockData after a 1200ms delay.
   useEffect(() => {
     let cancelled = false;
 
@@ -48,13 +50,34 @@ export default function App() {
         }
 
         let data = [];
+        let hasSavedData = false;
 
-        if (Array.isArray(productsJson)) {
-          data = productsJson;
-        } else if (productsJson && Array.isArray(productsJson.products)) {
-          data = productsJson.products;
-        } else {
-          throw new Error("Invalid data format.");
+        // Get saved products from localStorage.
+        const savedProducts = window.localStorage.getItem(PRODUCTS_STORAGE_KEY);
+
+        if (savedProducts !== null) {
+          try {
+            const parsedProducts = JSON.parse(savedProducts);
+
+            if (Array.isArray(parsedProducts)) {
+              data = parsedProducts;
+              hasSavedData = true;
+            }
+          } catch {
+            // Saved data is broken, so we will use mockData instead.
+            hasSavedData = false;
+          }
+        }
+
+        // If there is no valid saved data, load mockData.
+        if (!hasSavedData) {
+          if (Array.isArray(productsJson)) {
+            data = productsJson;
+          } else if (productsJson && Array.isArray(productsJson.products)) {
+            data = productsJson.products;
+          } else {
+            throw new Error("Invalid data format.");
+          }
         }
 
         setProducts(data);
@@ -71,6 +94,19 @@ export default function App() {
       window.clearTimeout(timer);
     };
   }, [failedLoad]);
+
+  useEffect(() => {
+    if (isLoading || errorMsg) {
+      return;
+    }
+
+    try {
+      // Save current products to localStorage.
+      window.localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+    } catch (error) {
+      console.error("Failed to save products to localStorage.", error);
+    }
+  }, [products, isLoading, errorMsg]);
 
   useEffect(() => {
     if (!flashMessage) {
