@@ -8,10 +8,12 @@
 
 ## Brief notes on architecture choices
 
-- I kept most of the app in `src/App.jsx` because the project is not that big yet.
-- The data is coming from `src/mockData.json`.
-- I used React hooks for state because that was enough for this size of app.
-- Styling is split between `src/index.css` and `src/App.css` so the global and page styling are not mixed together too much.
+- I kept most of the code in `src/App.jsx` because the app is still small.
+- The product list comes from `src/mockData.json`.
+- I used React hooks to manage state.
+- I split styles into `src/index.css` (global) and `src/App.css` (page styles) to keep it tidy.
+- Search, filter, and sort are calculated from the current product list instead of saving extra copy data in state.
+- I used a `draft` object in the modal so a user can type changes first and then click save.
 
 ## What I'd do next with more time
 
