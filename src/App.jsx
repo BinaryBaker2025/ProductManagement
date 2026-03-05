@@ -232,7 +232,7 @@ export default function App() {
       return;
     }
 
-    const ok = confirm("Delete this product? (UI only)");
+    const ok = confirm("Delete this product? ");
 
     if (!ok) {
       return;
