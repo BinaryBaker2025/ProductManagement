@@ -18,6 +18,6 @@
 - Break `App.jsx` into smaller components because it is getting a bit long now.
 - Make it more responsive by turning table rows into cards on mobile, because tables are hard to use on small screens.
 - Add better accessibility for the modal and keyboard use.
-- Add proper tests for the main flows.
 - Hook it up to a real backend or API.
 - Improve the form handling and error messages more.
+- Add bettter styling to make it a better UI and UX as a simple UI was used
