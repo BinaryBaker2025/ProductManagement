@@ -429,9 +429,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <div className="page-header">
-        <div className="page-eyebrow">Inventory Desk</div>
-        <h2>Products</h2>
-        <p>Manage product records, update stock status, and edit product details.</p>
+        <h2>Product Management</h2>
       </div>
 
       <div className="toolbar">
